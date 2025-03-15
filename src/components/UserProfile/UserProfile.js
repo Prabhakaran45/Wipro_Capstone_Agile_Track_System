@@ -17,7 +17,7 @@ const UserProfile = () => {
             axios.get('http://localhost:5000/users')
                 .then(res => {
                     if (user.role === 'admin') {
-                        setUsers(res.data.filter(u => u?.role !== 'admin'));
+                        setUsers(res.data.filter(user => user?.role !== 'admin'));
                     } else {
                         setSelectedUser(user);
                     }
@@ -40,7 +40,7 @@ const UserProfile = () => {
 
     const handleGetHistory = (userId) => {
         fetchTasks(userId);
-        setSelectedUser(users.find(u => u?.id === userId));
+        setSelectedUser(users.find(user => user?.id === userId));
     };
 
     const handleAddUser = (values) => {
@@ -53,7 +53,7 @@ const UserProfile = () => {
         axios.post('http://localhost:5000/users', payload)
             .then(() => axios.get('http://localhost:5000/users'))
             .then(res => {
-                setUsers(res.data.filter(u => u?.role !== 'admin'));
+                setUsers(res.data.filter(user => user?.role !== 'admin'));
                 setShowForm(false);
             })
             .catch(err => console.log('Error adding user:', err));

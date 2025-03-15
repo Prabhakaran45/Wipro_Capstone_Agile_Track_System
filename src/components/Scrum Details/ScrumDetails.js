@@ -74,45 +74,45 @@ const ScrumDetails = ({ scrum }) => {
 
   return (
     <div className="container mt-4">
-  <div className="row justify-content-left">
-    <div className="col-md-8">
-      <h3 className="mb-3 text-left">Scrum Details for {scrum.name}</h3>
-      <div className="mt-4">
-        <h4 className="text-left">Tasks</h4>
-        <ul className="list-group">
-          {tasks.map((task) => (
-            <li key={task.id} className="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <strong>{task.title}:</strong> {task.description} - <em>{task.status}</em>
-              </div>
-              {user?.role === 'admin' && (
-                <select
-                  className="form-select w-auto ms-3"
-                  value={task.status}
-                  onChange={(e) => handleStatusChange(task.id, e.target.value)}
-                >
-                  <option value="To Do">Not Started</option>
-                  <option value="In Progress">In Progress</option>
-                  <option value="Done">Completed</option>
-                </select>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="mt-4">
-        <h4 className="text-left">Users</h4>
-        <ul className="list-group">
-          {users.map((user) => (
-            <li key={user.id} className="list-group-item d-flex justify-content-between align-items-center">
-              <div>{user.name} ({user.email})</div>
-            </li>
-          ))}
-        </ul>
+      <div className="row justify-content-left">
+        <div className="col-md-8">
+          <h3 className="mb-3 text-left">Scrum Details for {scrum.name}</h3>
+          <div className="mt-4">
+            <h4 className="text-left">Tasks</h4>
+            <ul className="list-group">
+              {tasks.map((task) => (
+                <li key={task.id} className="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <strong>{task.title}:</strong> {task.description} - <em>{task.status}</em>
+                  </div>
+                  {user?.role === 'admin' && (
+                    <select
+                      className="form-select w-auto ms-3"
+                      value={task.status}
+                      onChange={(e) => handleStatusChange(task.id, e.target.value)}
+                    >
+                      <option value="To Do">Not Started</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Done">Completed</option>
+                    </select>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-4">
+            <h4 className="text-left">Users</h4>
+            <ul className="list-group">
+              {users.map((user) => (
+                <li key={user.id} className="list-group-item d-flex justify-content-between align-items-center">
+                  <div>{user.name} ({user.email})</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
   );
 };

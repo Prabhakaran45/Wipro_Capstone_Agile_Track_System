@@ -55,6 +55,13 @@
       "email": "sathish@gmail.com",
       "password": "sathish123",
       "role": "employee"
+    },
+    {
+      "id": "d31f",
+      "name": "prabhu",
+      "email": "prabhu@gmail.com",
+      "password": "prabhu2002",
+      "role": "employee"
     }
   ],
   "scrums": [

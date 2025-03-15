@@ -8,14 +8,14 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const handleSignUp = (values) => {
-    const payload = {
+    const signUpDetails = {
       name: values.name,
       email: values.email,
       password: values.password,
       role: 'employee',
     };
-    axios
-      .post('http://localhost:5000/users', payload)
+
+    axios.post('http://localhost:5000/users', signUpDetails)
       .then((response) => {
         console.log(response);
         navigate('/login');
@@ -31,15 +31,19 @@ const SignUp = () => {
       <div className="row justify-content-left">
         <div className="col-md-6">
           <Formik
-            initialValues={{ name: '', email: '', password: '' }}
+            initialValues={{
+              name: '',
+              email: '',
+              password: ''
+            }}
             onSubmit={(values) => {
               handleSignUp(values);
             }}
             validationSchema={Yup.object({
-              name: Yup.string().required('Required'),
+              name: Yup.string().required('Name Required'),
               email: Yup.string().email("Please include an '@'").required('Required'),
               password: Yup.string()
-                .required('Required')
+                .required('password Required')
                 .min(8, 'Password is too short - should be 8 chars minimum'),
             })}
           >
